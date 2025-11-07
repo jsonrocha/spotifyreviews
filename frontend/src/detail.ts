@@ -21,34 +21,34 @@ async function fetchDetail(type: string, id: string, token: string) {
 }
 
 function renderArtist(data: any) {
-    const root = document.getElementById("root")!;
-    root.innerHTML = `
+    const detail = document.getElementById("detail")!;
+    detail.innerHTML = `
     <h1>${data.name}</h1>
     ${data.images?.[0] ? `<img class="cover" src="${data.images[0].url}" />` : ""}
-    <p class="muted">Followers: ${data.followers?.total ?? "n/a"}</p>
-    <p class="muted">Genres: ${(data.genres || []).join(", ")}</p>
+    <h2>Followers: ${data.followers?.total ?? "n/a"}</h2>
+    <h2>Genres: ${(data.genres || []).join(", ")}</h2>
   `;
 }
 
 function renderAlbum(data: any) {
-    const root = document.getElementById("root")!;
-    root.innerHTML = `
+    const detail = document.getElementById("detail")!;
+    detail.innerHTML = `
     <h1>${data.name}</h1>
     ${data.images?.[0] ? `<img class="cover" src="${data.images[0].url}" />` : ""}
-    <p class="muted">By: ${data.artists?.map((a: any) => a.name).join(", ")}</p>
-    <p class="muted">Release: ${data.release_date}</p>
+    <h2>By: ${data.artists?.map((a: any) => a.name).join(", ")}</h2>
+    <h2>Release: ${data.release_date}</h2>
     <h3>Tracks</h3>
     <ol>${(data.tracks?.items || []).map((t: any) => `<li>${t.name}</li>`).join("")}</ol>
   `;
 }
 
 function renderTrack(data: any) {
-    const root = document.getElementById("root")!;
-    root.innerHTML = `
+    const detail = document.getElementById("detail")!;
+    detail.innerHTML = `
     <h1>${data.name}</h1>
     ${data.album?.images?.[0] ? `<img class="cover" src="${data.album.images[0].url}" />` : ""}
-    <p class="muted">By: ${data.artists?.map((a: any) => a.name).join(", ")}</p>
-    <p class="muted">Album: ${data.album?.name ?? ""}</p>
+    <h2>By: ${data.artists?.map((a: any) => a.name).join(", ")}</h2>
+    <h2>Album: ${data.album?.name ?? ""}</h2>
     ${data.preview_url ? `<audio controls src="${data.preview_url}"></audio>` : ""}
   `;
 }
@@ -56,7 +56,7 @@ function renderTrack(data: any) {
 (async function main() {
     const parsed = parseHash();
     if (!parsed) {
-        document.getElementById("root")!.innerHTML = "<p class='muted'>No item specified</p>";
+        document.getElementById("detail")!.innerHTML = "<h2>No item specified</h2>";
         return;
     }
     const t = await getToken();
@@ -64,5 +64,5 @@ function renderTrack(data: any) {
     if (parsed.type === "artist") renderArtist(d);
     else if (parsed.type === "album") renderAlbum(d);
     else if (parsed.type === "track") renderTrack(d);
-    else document.getElementById("root")!.innerHTML = "<p class='muted'>Unsupported type</p>";
+    else document.getElementById("detail")!.innerHTML = "<h2>Unsupported type</h2>";
 })();
