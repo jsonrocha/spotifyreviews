@@ -94,11 +94,6 @@ li:hover {
   margin-right: 10px;
 }
 
-.sign-in-btn {
-  display: flex;
-  align-items: center;
-}
-
 .row {
   display: flex;
   align-items: center;
@@ -168,9 +163,13 @@ li:hover {
   background-color: var(--accent);
   border: none;
   color: #fff;
+  max-width: 170px;
   padding: 0.6em 1.2em;
   border-radius: 30px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 600;
   font-size: 0.9rem;
   transition: background 0.2s ease-in-out;
@@ -537,4 +536,17 @@ ul.search-results li {
 li.selected {
   background: var(--accent) !important;
   color: #fff !important;
+}
+
+/* DETAIL */
+.cover {
+  max-width: 320px
+}
+
+img {
+  max-width: 100%
+}
+
+.muted {
+  color: #9fb0c6
 }

@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (refreshToken) localStorage.setItem("spotify_refresh_token", refreshToken);
 
       fetchUserProfile(receivedToken);
-      fetchUserLibrary(receivedToken);
+      fetchRecentlyPlayed(receivedToken);
     }
   });
 
