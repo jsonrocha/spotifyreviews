@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>NoteWorthy</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+  <button class="sign-in-btn" id="login-btn">Sign in to Spotify</button>
+  <br>
+  <div class="container">
+    <div id="header">
+      <div id="search-wrap">
+        <input id="q" placeholder="Search albums, artists or tracks..." autocomplete="off" />
+        <div id="search-results"></div>
+      </div>
+      <div id="user-info"></div>
+    </div>
+
+    <div class="main-layout">
+      <aside id="side-menu">
+        <ul>
+          <li id="menu-recently-played" class="active">Recently Played</li>
+          <li id="menu-playlists">Playlists</li>
+        </ul>
+      </aside>
+
+      <section id="content-area">
+        <div id="results-wrap"></div>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+
+</html>
