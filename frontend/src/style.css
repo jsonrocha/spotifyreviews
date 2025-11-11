@@ -630,6 +630,10 @@ li:last-child {
   width: 100%;
 }
 
+a:hover {
+  color: var(--accent, #1db954);
+}
+
 .track-meta {
   font-size: 0.8rem;
   color: var(--text-muted);
