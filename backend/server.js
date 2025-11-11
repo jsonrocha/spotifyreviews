@@ -16,7 +16,7 @@ app.use("/api/follows", followsRoutes);
 app.use("/auth", authRoutes);
 app.get("/", (req, res) => res.send("Spotify Review API running."));
 
-const CLIENT_ID = process.env.SPOTIFY_CLIENT_URL;
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 const REDIRECT_URI = process.env.SPOTIFY_REDIRECT_URI || "http://localhost:3001/callback";
 

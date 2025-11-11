@@ -29,9 +29,125 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* centers horizontally */
   justify-content: flex-start;
-  padding-top: 40px;
+  padding-top: 60px;
+  /* was 40px — adds breathing room */
+}
+
+/* Flip Card */
+.flip-card {
+  background: none;
+  perspective: 1000px;
+  margin: 40px auto;
+  /* centers the card visually */
+  max-width: 770px;
+  width: 500px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 500px;
+  min-height: 600px;
+  /* gives it space so flipping doesn’t squish */
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  display: flex;
+  align-items: center;
+  /* centers card vertically inside wrapper */
+  justify-content: center;
+}
+
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+  transition: transform 0.8s ease;
+}
+
+.tox-tinymce {
+  border-radius: 10px !important;
+  background: #0f0f0f !important;
+  border: 1px solid #333 !important;
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 500px;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.review-btn {
+  margin-top: 10px;
+  padding: 10px 16px;
+  border-radius: 30px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.review-form {
+  width: 100%;
+}
+
+.review-form textarea {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #0f0f0f;
+  color: white;
+  padding: 10px;
+  resize: none;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.star {
+  font-size: 4rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.star.active,
+.star:hover {
+  color: var(--accent);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.form-actions button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.form-actions button:hover {
+  background: #18a74b;
 }
 
 .back-btn {

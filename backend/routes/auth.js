@@ -20,7 +20,7 @@ router.get("/callback", async (req, res) => {
     try {
         const tokenRes = await axios.post("https://accounts.spotify.com/api/token", new URLSearchParams({
             code,
-            redirect_uri: process.env.REDIRECT_URI,
+            redirect_uri: process.env.SPOTIFY_REDIRECT_URI,
             grant_type: "authorization_code",
         }), {
             headers: {
@@ -50,7 +50,7 @@ router.get("/callback", async (req, res) => {
       `);
 
         const token = jwt.sign({ userId: result.recordset[0].Id }, process.env.JWT_SECRET);
-        res.redirect(`${process.env.CLIENT_URL}?token=${token}`);
+        res.redirect(`${process.env.SPOTIFY_CLIENT_URL}?token=${token}`);
     } catch (err) {
         console.error(err.response?.data || err);
         res.status(500).send("Auth failed");
