@@ -29,6 +29,7 @@ function renderArtist(data: any) {
     ${data.images?.[0] ? `<img class="cover" src="${data.images[0].url}" />` : ""}
     <h2>Followers: ${data.followers?.total ?? "n/a"}</h2>
     <h2>Genres: ${(data.genres || []).join(", ")}</h2>
+    <h2><a href=" ${data.external_urls.spotify}">Listen on Spotify</a></h2>
   `;
 }
 
@@ -43,6 +44,7 @@ function renderAlbum(data: any) {
           ${data.images?.[0] ? `<img class="cover" src="${data.images[0].url}" />` : ""}
           <h2>By: ${data.artists?.map((a: any) => a.name).join(", ")}</h2>
           <h2>Release: ${data.release_date}</h2>
+          <h2><a href=" ${data.external_urls.spotify}">Listen on Spotify</a></h2>
         </div>
 
         <div class="flip-card-back">
@@ -125,7 +127,7 @@ function renderTrack(data: any) {
     ${data.album?.images?.[0] ? `<img class="cover" src="${data.album.images[0].url}" />` : ""}
     <h2>By: ${data.artists?.map((a: any) => a.name).join(", ")}</h2>
     <h2>Album: ${data.album?.name ?? ""}</h2>
-    <h2>Preview: ${data.preview_url ? `<audio controls src="${data.preview_url}"></audio>` : ""}</h2>
+    <h2><a href=" ${data.external_urls.spotify}">Listen on Spotify</a></h2>
   `;
 }
 
