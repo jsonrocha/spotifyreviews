@@ -2,15 +2,23 @@ import express from "express";
 import fetch from "node-fetch";
 import cors from "cors";
 import dotenv from "dotenv";
+import authRoutes from "./routes/auth.js";
+import reviewsRoutes from "./routes/reviews.js";
+import followsRoutes from "./routes/follows.js";
+
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use("/api/reviews", reviewsRoutes);
+app.use("/api/follows", followsRoutes);
+app.use("/auth", authRoutes);
+app.get("/", (req, res) => res.send("Spotify Review API running."));
 
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:3001/callback";
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_URL;
+const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
+const REDIRECT_URI = process.env.SPOTIFY_REDIRECT_URI || "http://localhost:3001/callback";
 
 console.log("CLIENT_ID:", CLIENT_ID);
 
